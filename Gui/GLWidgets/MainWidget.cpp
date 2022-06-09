@@ -1,6 +1,12 @@
 #include "GLWidgets/MainWidget.h"
 
 #include <QtGui/QGuiApplication>
+#include <QtCore/QThread>
+
+namespace
+{
+    static constexpr const char* meshName() { return "dragon"; }
+}
 
 //---------------------------------------------------------------------------------------
 MainWidget::MainWidget(QWidget *parent) : GLWidget(parent)
@@ -77,6 +83,12 @@ void MainWidget::initializeGL()
 void MainWidget::loadModel()
 //---------------------------------------------------------------------------------------
 {
+    if (m_transparencyRenderer.containsTransparentObject(::meshName()))
+    {
+        // already loaded
+        return;
+    }
+
     qInfo() << "loading model";
     QGuiApplication::setOverrideCursor(Qt::WaitCursor);
     const QString resolvedPath(":/Model/dragon.obj");
@@ -91,7 +103,7 @@ void MainWidget::loadModel()
     m_meshRenderer->setMaterialAmbiantColor(rust3DColor);
     m_meshRenderer->setOpacity(0.5f);
 
-    m_transparencyRenderer.appendTransparentObject(MESH_NAME, m_meshRenderer);
+    m_transparencyRenderer.appendTransparentObject(::meshName(), m_meshRenderer);
 
     geom::Point modelMin, modelMax;
     computeBoundingBox(modelMin, modelMax);
@@ -164,8 +176,16 @@ void MainWidget::paintGL()
 {
     GLWidget::paintGL();
 
-    glClearColor(WHITE[0], WHITE[1], WHITE[2], 1.f);
+    static const QColor skyColor(44, 183, 185);
+    glClearColor(skyColor.redF(), skyColor.greenF(), skyColor.blueF(), 1.f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+#ifdef AUTO_SHADER
+    if (!m_transparencyRenderer.isInitialized())
+    {
+        m_transparencyRenderer.initialize(scaleToHighDpi(width()), scaleToHighDpi(height()));
+    }
+#endif
 
     m_transparencyRenderer.render();
 }

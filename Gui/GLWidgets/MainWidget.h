@@ -38,13 +38,9 @@ protected slots:
 
 protected:
     MeshModel m_model;
-    static constexpr const char* MESH_NAME{ "dragon" };
 
     gui::gl::MeshRenderer* m_meshRenderer;
     gui::gl::DualDepthPeelingRenderer m_transparencyRenderer;
-
-    static constexpr std::array<float, 3> WHITE{ 1.f, 1.f, 1.f };
-    static constexpr std::array<float, 3> BLACK{ 0.f, 0.f, 0.f };
 
 #ifdef _DEBUG
     QOpenGLDebugLogger m_logger;
