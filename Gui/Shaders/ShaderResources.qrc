@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/Shaders">
+        <file>UnorderedTransparency/blend_fragment.glsl</file>
+        <file>UnorderedTransparency/final_fragment.glsl</file>
+        <file>UnorderedTransparency/init_fragment.glsl</file>
+        <file>UnorderedTransparency/init_vertex.glsl</file>
+        <file>UnorderedTransparency/peel_fragment.glsl</file>
+        <file>UnorderedTransparency/peel_vertex.glsl</file>
+        <file>UnorderedTransparency/quad_vertex.glsl</file>
+        <file>multiple_lights_fragment.glsl</file>
+        <file>multiple_lights_vertex.glsl</file>
+        <file>path_fragment.glsl</file>
+        <file>path_geometry.glsl</file>
+        <file>path_vertex.glsl</file>
+        <file>color_fragment.glsl</file>
+        <file>color_vertex.glsl</file>
+        <file>Common/shade_fragment.glsl</file>
+        <file>Common/shade_vertex.glsl</file>
+    </qresource>
+</RCC>
