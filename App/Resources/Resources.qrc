@@ -1,5 +1,5 @@
 <RCC>
     <qresource prefix="/Model">
-        <file compress="19" compress-algo="zstd">dragon.obj</file>
+        <file compress="4" compress-algo="zstd">dragon.obj</file>
     </qresource>
 </RCC>

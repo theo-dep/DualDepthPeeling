@@ -20,6 +20,8 @@ public:
     explicit MainWidget(QWidget *parent = nullptr);
     virtual ~MainWidget();
 
+    inline void setModelFilepath(const QString& p_filepath) { m_modelFilepath = p_filepath; }
+
 protected:
     void initializeGL() override;
 
@@ -37,6 +39,7 @@ protected slots:
 #endif
 
 protected:
+    QString m_modelFilepath;
     MeshModel m_model;
 
     gui::gl::MeshRenderer* m_meshRenderer;

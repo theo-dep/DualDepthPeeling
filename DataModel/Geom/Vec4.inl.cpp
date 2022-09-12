@@ -1,5 +1,7 @@
 #include <QtCore/QtDebug>
 
+#include <cmath>
+
 namespace geom
 {
 

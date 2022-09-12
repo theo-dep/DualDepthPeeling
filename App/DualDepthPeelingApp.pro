@@ -32,8 +32,8 @@ build_pass:CONFIG(debug, debug|release):CONFIGURATION = debug
 else:build_pass:CONFIG(release, debug|release):CONFIGURATION = release
 
 LIBS += \
-    -L$$OUT_PWD/../Gui/$${CONFIGURATION} -lGui \
-    -L$$OUT_PWD/../DataModel/$${CONFIGURATION} -lDataModel
+    -L$$OUT_PWD/../Gui -L$$OUT_PWD/../Gui/$${CONFIGURATION} -lGui \
+    -L$$OUT_PWD/../DataModel -L$$OUT_PWD/../DataModel/$${CONFIGURATION} -lDataModel
 
 RESOURCES += \
     Resources/Resources.qrc

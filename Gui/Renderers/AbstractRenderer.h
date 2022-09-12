@@ -20,8 +20,6 @@ namespace gui
 Q_DISABLE_COPY(Class); \
 Class(Class&&) noexcept Q_DECL_EQ_DELETE; \
 Class& operator=(Class&&) noexcept Q_DECL_EQ_DELETE;
-#else
-static_assert(false, "Define Q_DISABLE_COPY_MOVE must be removed");
 #endif
 
 #ifdef _DEBUG
@@ -83,7 +81,7 @@ namespace gui::gl
         virtual bool updateRenderTargets(int p_width, int p_height) = 0;
         virtual bool initRenderTargets(int p_width, int p_height) = 0;
         virtual void deleteRenderTargets(void) = 0;
-        
+
         inline void requestUpdateShaders(void) { m_shaderInitialized = false; } //!< must call initialize after
         virtual bool isShadersInitialized(void) const = 0;
         virtual bool initShaders(void) = 0;

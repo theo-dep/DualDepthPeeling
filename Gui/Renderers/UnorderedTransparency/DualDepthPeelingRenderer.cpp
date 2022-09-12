@@ -273,7 +273,7 @@ namespace gui::gl
             //glBindFramebuffer(GL_FRAMEBUFFER, m_dualPeelingFboId[currId]);
 
             glDrawBuffers(2, &DRAW_BUFFERS.at(bufId + 1));
-            glClearColor(0, 0, 0, 0);
+            glClearColor(m_backgroundColor[0], m_backgroundColor[1], m_backgroundColor[2], 0);
             glClear(GL_COLOR_BUFFER_BIT);
 
             glDrawBuffer(DRAW_BUFFERS.at(bufId + 0));

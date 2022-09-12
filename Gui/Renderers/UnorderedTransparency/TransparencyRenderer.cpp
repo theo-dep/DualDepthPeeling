@@ -15,6 +15,7 @@ namespace gui::gl
         , m_opaqueDepthTexId(0)
         , m_width(0)
         , m_height(0)
+        , m_backgroundColor(1.f, 1.f, 1.f)
         , m_quadVertexArrayId(0)
         , m_quadPositionBufferId(0)
         , m_opaqueFramebufferFboId(0)
