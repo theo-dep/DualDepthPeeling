@@ -35,5 +35,19 @@ LIBS += \
     -L$$OUT_PWD/../Gui -L$$OUT_PWD/../Gui/$${CONFIGURATION} -lGui \
     -L$$OUT_PWD/../DataModel -L$$OUT_PWD/../DataModel/$${CONFIGURATION} -lDataModel
 
-RESOURCES += \
-    Resources/Resources.qrc
+win32-msvc {
+    # MSVC compiler is out of heap space, even with /Zm option
+    # TODO: decimate the dragon.obj to reduce its size
+    PWD_WIN = $${PWD}
+    DESTDIR_WIN = $${OUT_PWD}
+    PWD_WIN ~= s,/,\\,g
+    DESTDIR_WIN ~= s,/,\\,g
+
+    copyfiles.commands = $$quote(cmd /c xcopy /S /I /Y $${PWD_WIN}\\Resources\\dragon.obj $${DESTDIR_WIN})
+
+    QMAKE_EXTRA_TARGETS += copyfiles
+    POST_TARGETDEPS += copyfiles
+} else {
+    RESOURCES += \
+        Resources/Resources.qrc
+}

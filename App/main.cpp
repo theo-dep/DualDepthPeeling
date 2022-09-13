@@ -27,7 +27,11 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWidget w;
+#ifdef Q_CC_MSVC
+    w.setModelFilepath("./dragon.obj");
+#else
     w.setModelFilepath(":/Model/dragon.obj");
+#endif
     w.setMinimumSize(1024, 768);
     w.show();
     return a.exec();

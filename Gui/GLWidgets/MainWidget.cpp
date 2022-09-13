@@ -20,7 +20,7 @@ MainWidget::MainWidget(QWidget *parent) : GLWidget(parent)
     m_camera.setZoom(1.);
 
     static const QColor skyColor(44, 183, 185);
-    m_transparencyRenderer.setBackgroundColor(QVector3D{ skyColor.redF(), skyColor.greenF(), skyColor.blueF() });
+    m_transparencyRenderer.setBackgroundColor(QVector3D(skyColor.redF(), skyColor.greenF(), skyColor.blueF()));
 }
 
 //---------------------------------------------------------------------------------------
@@ -178,6 +178,9 @@ void MainWidget::paintGL()
 //---------------------------------------------------------------------------------------
 {
     GLWidget::paintGL();
+
+    glClearColor(0, 0, 0, 0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 #ifdef AUTO_SHADER
     if (!m_transparencyRenderer.isInitialized())
