@@ -4,7 +4,8 @@
 
 int main(int argc, char *argv[])
 {
-#ifdef Q_OS_MACOS
+// https://bugreports.qt.io/browse/QTBUG-70206
+#if defined(Q_OS_MACOS) && QT_VERSION <= QT_VERSION_CHECK(5, 12, 6)
     qputenv("QT_MAC_WANTS_LAYER", "1");
 #endif
 
