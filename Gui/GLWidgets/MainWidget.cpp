@@ -18,6 +18,9 @@ MainWidget::MainWidget(QWidget *parent) : GLWidget(parent)
 #endif
 {
     m_camera.setZoom(1.);
+
+    static const QColor skyColor(44, 183, 185);
+    m_transparencyRenderer.setBackgroundColor(QVector3D(skyColor.redF(), skyColor.greenF(), skyColor.blueF()));
 }
 
 //---------------------------------------------------------------------------------------
@@ -91,7 +94,7 @@ void MainWidget::loadModel()
 
     qInfo() << "loading model";
     QGuiApplication::setOverrideCursor(Qt::WaitCursor);
-    const QString resolvedPath(":/Model/dragon.obj");
+    const QString resolvedPath(m_modelFilepath);
     m_model.loadObjPath(resolvedPath, false);
     QGuiApplication::restoreOverrideCursor();
     qInfo() << "done";
@@ -176,8 +179,7 @@ void MainWidget::paintGL()
 {
     GLWidget::paintGL();
 
-    static const QColor skyColor(44, 183, 185);
-    glClearColor(skyColor.redF(), skyColor.greenF(), skyColor.blueF(), 1.f);
+    glClearColor(0, 0, 0, 0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 #ifdef AUTO_SHADER

@@ -6,6 +6,7 @@
 *.lo
 *.o
 *.obj
+!dragon.obj
 
 # Precompiled Headers
 *.gch

@@ -30,6 +30,9 @@ namespace gui::gl
         //!< be requested when the TransparencyRenderer will be active.
         inline void prepareForResize(void) { requestUpdateRenderTargets(); }
 
+        //!< Save the background color for rendering
+        inline void setBackgroundColor(const QVector3D& p_color) { m_backgroundColor = p_color; }
+
         //!< add all opaque objects to render them before transparent mesh.
         //!< The sub classes blend automatically opaque and transparent objects for depth test
         void appendOpaqueObject(const QString& p_objectName, AbstractRenderer* p_object); // NOT OWNER BUT NOT CONST FOR RENDER
@@ -79,6 +82,8 @@ namespace gui::gl
 
         int m_width;
         int m_height;
+
+        QVector3D m_backgroundColor;
 
         QHash<QString, MeshRenderer*> m_transparencyRendererMap;
 
