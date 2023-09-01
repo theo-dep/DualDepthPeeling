@@ -32,3 +32,10 @@
 *.out
 *.app
 *.user
+
+# Visual Studio
+.vs/
+.qmake.stash
+*.vcxproj.user
+**/debug/
+**/release/
