@@ -5,8 +5,13 @@
 
 #include <QtGui/QColor>
 #include <QtGui/QFont>
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QtOpenGL/QOpenGLFunctions_3_3_Core>
+#include <QtOpenGLWidgets/QOpenGLWidget>
+#else
 #include <QtGui/QOpenGLFunctions_3_3_Core>
 #include <QtWidgets/QOpenGLWidget>
+#endif
 #include <QtWidgets/QGestureEvent>
 #include <QtCore/QString>
 #include <QtCore/QPoint>

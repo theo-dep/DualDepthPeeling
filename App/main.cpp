@@ -12,8 +12,10 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_UseDesktopOpenGL, true);
     QCoreApplication::setAttribute(Qt::AA_ShareOpenGLContexts, true);// mandatory to shared GL context between all windows
 
+#if defined(Q_OS_MACOS) && QT_VERSION <= QT_VERSION_CHECK(6, 0, 0)
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling, true);
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+#endif
 
     QSurfaceFormat format = QSurfaceFormat::defaultFormat();
     format.setDepthBufferSize(24);
@@ -28,11 +30,7 @@ int main(int argc, char *argv[])
 
     QApplication a(argc, argv);
     MainWidget w;
-#ifdef Q_CC_MSVC
-    w.setModelFilepath("./dragon.obj");
-#else
     w.setModelFilepath(":/Model/dragon.obj");
-#endif
     w.setMinimumSize(1024, 768);
     w.show();
     return a.exec();

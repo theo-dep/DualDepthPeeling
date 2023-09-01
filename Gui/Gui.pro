@@ -3,6 +3,10 @@ TEMPLATE = lib
 CONFIG += static debug_and_release c++17 qtquickcompiler
 
 QT = core gui widgets
+versionAtLeast(QT_VERSION, 6) {
+    DEFINES += QT6
+    QT += opengl openglwidgets
+}
 
 DEFINES += GL_SILENCE_DEPRECATION
 

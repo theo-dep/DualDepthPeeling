@@ -7,7 +7,11 @@
 #include <Mesh/MeshModel.h>
 
 #ifdef _DEBUG
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QtOpenGL/QOpenGLDebugLogger>
+#else
 #include <QtGui/QOpenGLDebugLogger>
+#endif
 #endif
 
 #include <array>

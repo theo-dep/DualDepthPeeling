@@ -1,7 +1,12 @@
 #pragma once
 
 #include <QtGui/QVector3D>
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QtOpenGL/QtOpenGL>
+#else
 #include <QtOpenGL/QGL>
+#endif
 
 class QOpenGLShaderProgram;
 

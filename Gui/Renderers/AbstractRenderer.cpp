@@ -2,7 +2,12 @@
 
 #include <QtCore/QDebug>
 #include <QtCore/QDir>
+
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QtOpenGL/QOpenGLFramebufferObject>
+#else
 #include <QtGui/QOpenGLFramebufferObject>
+#endif
 
 //!< Q_INIT_RESOURCE does not work inside a namespace
 static void initResources(void)

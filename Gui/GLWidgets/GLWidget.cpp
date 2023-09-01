@@ -15,7 +15,7 @@ namespace gui
     {
         // SBO 2020/03/03 force palette background color to black to avoid solarization effects with Qt5.12.6
         QPalette pal = palette();
-        pal.setColor(QPalette::Background, Qt::black);
+        pal.setColor(QPalette::Active, QPalette::Base, Qt::black);
         setAutoFillBackground(true);
         setPalette(pal);
 
@@ -157,9 +157,10 @@ namespace gui
     void GLWidget::wheelEvent(QWheelEvent* p_event)
     //-----------------------------------------------------------------------------
     {
-        if (p_event->delta() != 0)
+        const int delta{ p_event->angleDelta().y() };
+        if (delta != 0)
         {
-            m_camera.zoom(p_event->delta());
+            m_camera.zoom(delta);
 
             update();
         }

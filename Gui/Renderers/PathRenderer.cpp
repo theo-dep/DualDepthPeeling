@@ -14,7 +14,7 @@ namespace gui::gl
         , m_thickness(2.f)
         , m_renderWithStrip(p_renderWithStrip)
     {
-        init(p_pointContainer, p_color);
+        init(p_pointContainer, QVector4D(p_color));
     }
 
     //---------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ namespace gui::gl
         , m_thickness(2.f)
         , m_renderWithStrip(p_renderWithStrip)
     {
-        init(p_point1, p_point2, p_color);
+        init(p_point1, p_point2, QVector4D(p_color));
     }
 
     //---------------------------------------------------------------------------------------
@@ -38,7 +38,7 @@ namespace gui::gl
     void PathRenderer::init(const QList<geom::Point>& p_pointContainer, const QVector4D& p_color)
     //---------------------------------------------------------------------------------------
     {
-        const int containerSize{ p_pointContainer.size() };
+        const int containerSize{ static_cast<int>(p_pointContainer.size()) };
         m_vertexObject.resize(6 * containerSize);
         m_vertexObject.squeeze();
         m_colors.resize(2 * containerSize);

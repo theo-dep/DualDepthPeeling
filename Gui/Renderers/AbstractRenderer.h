@@ -5,9 +5,15 @@
 #include "Renderers/Debug/AutoShaderReloader.h"
 #endif
 
-#include <QtGui/QOpenGLFunctions_3_3_Core>
+#include <QtGlobal>
 
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+#include <QtOpenGL/QOpenGLFunctions_3_3_Core>
+#include <QtOpenGL/QOpenGLShaderProgram>
+#else
+#include <QtGui/QOpenGLFunctions_3_3_Core>
 #include <QtGui/QOpenGLShaderProgram>
+#endif
 
 namespace gui
 {
